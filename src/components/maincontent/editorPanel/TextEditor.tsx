@@ -36,7 +36,7 @@ export const TextEditor = forwardRef<HTMLDivElement, TextEditorProps>(
     const debouncedSync = useRef(
       debounce((text: string) => {
         setEditorText(text);
-      }, 300)
+      }, 100)
     ).current;
 
     const handleInput = (e: React.FormEvent<HTMLDivElement>) => {

@@ -17,7 +17,7 @@ const getCookie = (token: string) => {
   return cookieValue;
 };
 
-export const analyzeText = async (text: string) => {
+export const analyzeText = async (text: string, signal?: AbortSignal) => {
   const csrfToken = getCookie("csrftoken");
 
   const headers = {
@@ -31,6 +31,7 @@ export const analyzeText = async (text: string) => {
       method: "POST",
       headers,
       body: JSON.stringify({ text }),
+      signal
     }
   );
 

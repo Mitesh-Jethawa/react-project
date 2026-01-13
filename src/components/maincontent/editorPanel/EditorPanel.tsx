@@ -3,6 +3,7 @@ import { DEMO_TEXT } from "../../../constants";
 import { LayoutContext } from "../../../context";
 import { TextEditor } from "./TextEditor";
 import { getWordCount } from "../../../utils";
+import { StatusWindow } from "./StatusWindow";
 
 export const EditorPanel = () => {
   const { headerHeight, editorText, setEditorText } = useContext(LayoutContext);
@@ -31,7 +32,7 @@ export const EditorPanel = () => {
   useEffect(() => {
     setTimeout(() => {
       loadDemo()
-    }, 1000)
+    }, 100)
   }, [])
 
   const loadDemo = () => {
@@ -39,7 +40,7 @@ export const EditorPanel = () => {
     setTimeout(() => {
       if (!divRef.current) return;
       moveCursorToEnd(divRef.current);
-    }, 300);
+    }, 100);
   };
 
   const clearText = () => {
@@ -47,7 +48,7 @@ export const EditorPanel = () => {
     setTimeout(() => {
       if (!divRef.current) return;
       moveCursorToEnd(divRef.current);
-    }, 300);
+    }, 100);
   };
 
   return (
@@ -73,10 +74,7 @@ export const EditorPanel = () => {
           <div className="char-count">
             <span>{getWordCount(editorText)}</span> words
           </div>
-
-          <div className="status">
-            <span>● Ready</span>
-          </div>
+          <StatusWindow/>
         </div>
       </div>
     </section>
