@@ -41,9 +41,9 @@ useEffect(() => {
 
   const debounceTimer = setTimeout(() => {
     analyzeText(editorText, controller.signal)
-      .then((res) => {
+      .then((result : BackendResult) => {
         if (requestId !== requestIdRef.current) return;
-        setResult(res);
+        setResult(result);
         setStatus("success");
 
         timeoutRef.current = setTimeout(() => {
